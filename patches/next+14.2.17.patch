@@ -1,0 +1,13 @@
+diff --git a/node_modules/next/dist/build/babel/loader/get-config.js b/node_modules/next/dist/build/babel/loader/get-config.js
+index 69fd17b..9e2353f 100644
+--- a/node_modules/next/dist/build/babel/loader/get-config.js
++++ b/node_modules/next/dist/build/babel/loader/get-config.js
+@@ -140,7 +140,7 @@ function getCacheCharacteristics(loaderOptions, source, filename) {
+     ].filter(Boolean);
+ }
+ const isJsonFile = /\.(json|babelrc)$/;
+-const isJsFile = /\.js$/;
++const isJsFile = /\.c?js$/;
+ /**
+  * While this function does block execution while reading from disk, it
+  * should not introduce any issues.  The function is only invoked when

@@ -1,0 +1,15 @@
+export const easings = {
+  inQuad: `cubic-bezier(0.11, 0, 0.5, 0)`,
+  outQuad: `cubic-bezier(0.5, 1, 0.89, 1)`,
+  inOutQuad: `cubic-bezier(0.455, 0.03, 0.515, 0.955)`,
+  inCubic: `cubic-bezier(0.55, 0.055, 0.675, 0.19)`,
+  outCubic: `cubic-bezier(0.33, 1, 0.68, 1)`,
+  inOutCubic: `cubic-bezier(0.645, 0.045, 0.355, 1)`,
+  inQuart: `cubic-bezier(0.895, 0.03, 0.685, 0.22)`,
+  outQuart: `cubic-bezier(0.165, 0.84, 0.44, 1)`,
+  inOutQuart: `cubic-bezier(0.77, 0, 0.175, 1)`,
+  inOutQuint: `cubic-bezier(0.86, 0, 0.07, 1)`,
+  inSine: `cubic-bezier(0.47, 0, 0.745, 0.715)`,
+  outSine: `cubic-bezier(0.39, 0.575, 0.565, 1)`,
+  elastic: `cubic-bezier(0.4, 1.01, 0.32, 1.05)`,
+} as const;
