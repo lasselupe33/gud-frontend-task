@@ -30,7 +30,7 @@ export function AlbumList(props: Props) {
     //
     // Let's wait for this before showing the list to avoid flicker when the
     // correct viewMode is initially loaded.
-    setView(viewModeSchema.parse(router.query["view"]));
+    setView(viewModeSchema.parse(router.query["view"]) ?? "list");
   }, [router.isReady, router.query]);
 
   const handleViewChange = (nextView: ViewMode) => {
