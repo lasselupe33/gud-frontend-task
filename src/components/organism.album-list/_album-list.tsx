@@ -16,7 +16,9 @@ type Props = {
 
 export function AlbumList(props: Props) {
   const router = useRouter();
-  const [view, setView] = useState<ViewMode>();
+  const [view, setView] = useState<ViewMode | undefined>(
+    viewModeSchema.parse(router.query["view"]),
+  );
 
   useEffect(() => {
     if (!router.isReady) {
