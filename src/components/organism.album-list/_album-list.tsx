@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import type { AlbumModel } from "../../requests/schema.album";
 import { IconToggleButton } from "../atom.icon-toggle-button";
@@ -16,25 +16,20 @@ type Props = {
 
 export function AlbumList(props: Props) {
   const router = useRouter();
+  const [view, setView] = useState<ViewMode>();
 
-  // NB: As our pages are statically rendered during SSR, then router
-  // parameters will not be available until clientside JS has been loaded.
-  //
-  // Let's wait for this before showing the list to avoid flicker when the
-  // correct viewMode is initially loaded.
-  if (!router.isReady) {
-    return null;
-  }
+  useEffect(() => {
+    if (!router.isReady) {
+      return;
+    }
 
-  return <Content {...props} />;
-}
-
-function Content(props: Props) {
-  const router = useRouter();
-
-  const [view, setView] = useState<ViewMode>(
-    viewModeSchema.parse(router.query["view"]),
-  );
+    // NB: As our pages are statically rendered during SSR, then router
+    // parameters will not be available until clientside JS has been loaded.
+    //
+    // Let's wait for this before showing the list to avoid flicker when the
+    // correct viewMode is initially loaded.
+    setView(viewModeSchema.parse(router.query["view"]));
+  }, [router.isReady, router.query]);
 
   const handleViewChange = (nextView: ViewMode) => {
     setView(nextView);
@@ -49,6 +44,10 @@ function Content(props: Props) {
       { shallow: true },
     );
   };
+
+  if (!view) {
+    return null;
+  }
 
   return (
     <div>
